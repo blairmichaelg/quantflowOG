@@ -2,6 +2,7 @@
   "name": "QuantFlow AI Backtest",
   "description": "Professional-grade quantitative research laboratory. Build, compile, and validate trading strategies using natural language AI and high-fidelity charting.",
   "requestFramePermissions": [
-    "microphone"
+    "microphone",
+    "camera"
   ]
 }

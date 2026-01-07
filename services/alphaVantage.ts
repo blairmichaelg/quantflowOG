@@ -61,6 +61,7 @@ export async function fetchHistoricalData(symbol: string, timeframe: string): Pr
     
     const timeSeries = data[seriesKey];
 
+    // Added volume property mapping to satisfy Candle interface requirements
     const candles: Candle[] = Object.keys(timeSeries).map((date) => {
       const entry = timeSeries[date];
       
@@ -75,6 +76,7 @@ export async function fetchHistoricalData(symbol: string, timeframe: string): Pr
         high: getVal('high'),
         low: getVal('low'),
         close: getVal('close'),
+        volume: getVal('volume'),
       };
     })
     .filter(c => c.open > 0)

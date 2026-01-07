@@ -25,12 +25,14 @@ export const generateMockData = (count: number = 200, timeframe: string = '1d'):
       ? time.toISOString().replace('T', ' ').substring(0, 19)
       : time.toISOString().split('T')[0];
 
+    // Added volume property to satisfy Candle interface requirements
     data.push({
       time: timeStr,
       open: Number(open.toFixed(2)),
       high: Number(high.toFixed(2)),
       low: Number(low.toFixed(2)),
-      close: Number(close.toFixed(2))
+      close: Number(close.toFixed(2)),
+      volume: Math.floor(Math.random() * 10000) + 1000
     });
     price = close;
   }
