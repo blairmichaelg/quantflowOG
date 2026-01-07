@@ -8,7 +8,7 @@ export interface Candle {
   volume: number;
 }
 
-export type EventType = 'MARKET' | 'SIGNAL' | 'ORDER' | 'FILL';
+export type EventType = 'MARKET' | 'TICK' | 'SIGNAL' | 'ORDER' | 'FILL';
 
 export interface BaseEvent {
   type: EventType;
@@ -19,6 +19,14 @@ export interface BaseEvent {
 export interface MarketEvent extends BaseEvent {
   type: 'MARKET';
   candle: Candle;
+}
+
+export interface TickEvent extends BaseEvent {
+  type: 'TICK';
+  price: number;
+  volume: number;
+  bid: number;
+  ask: number;
 }
 
 export interface SignalEvent extends BaseEvent {
@@ -87,6 +95,7 @@ export interface BacktestResults extends RiskMetrics {
 }
 
 export interface IndicatorConfig {
+  id: string;
   type: 'EMA' | 'SMA' | 'RSI' | 'MACD' | 'BB' | 'ATR' | 'STOCH' | 'ADX' | 'OBV';
   category: 'TREND' | 'MOMENTUM' | 'VOLATILITY' | 'VOLUME';
   params: Record<string, number>;
